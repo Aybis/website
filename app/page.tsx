@@ -6,30 +6,10 @@ import { sha256 } from 'js-sha256';
 import Checkbox from '@/src/components/Checkbox';
 import { CopyIcon } from '@sanity/icons';
 
-type Form = {
-  check: {
-    partnerId: string;
-    accountNumber: string;
-    productCode: string;
-  };
-  payment: {
-    inquiryId: number;
-    accountNumber: string;
-    productCode: string;
-    amount: number;
-    refNumber: string;
-    partnerId: string;
-  };
-  status: {
-    partnerId: string;
-    refNumber: string;
-  };
-};
-
 const Page: NextPage = () => {
   const apiKey = 'H4cSlLDPD0KV';
   const secret = '3YS2PKiI9yQflnwmpsqZQArgIshXmkQUfgV';
-  const baseUrl = 'https://dev.openapi.ayopop.id/api/';
+  // const baseUrl = 'https://dev.openapi.ayopop.id/api/';
   const [result, setresult] = useState();
   const [selectVersion, setselectVersion] = useState<any>({});
   const [selectTransaction, setselectTransaction] = useState<any>({});
@@ -100,7 +80,7 @@ const Page: NextPage = () => {
     myHeaders.append('TOKEN', token);
     myHeaders.append('Content-Type', 'application/json');
     myHeaders.append('Cache-Control', 'no-cache');
-    myHeaders.append('VERSION', '1.0');
+    myHeaders.append('VERSION', selectVersion.value);
 
     let requestOptions: any = {
       method: 'POST',
